@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./followings.css";
 import { connect } from "react-redux";
-import FollowingItem from "./followingItem";
+import FollowingItem from "../followers/followerItem";
 
-const REPO_IN_PAGES = 10;
+const ITEM_IN_PAGES = 10;
 
 const Repository = (props) => {
   const [search, setSearch] = useState("");
@@ -14,12 +14,12 @@ const Repository = (props) => {
 
   const searchList = (list) => {
     return list.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
+      item.login.toLowerCase().includes(search.toLowerCase())
     );
   };
 
   const nextPage = () => {
-    if (page < props.followings.length / REPO_IN_PAGES) {
+    if (page < props.followings.length / ITEM_IN_PAGES) {
       setPage(page + 1);
     }
   };
@@ -50,7 +50,7 @@ const Repository = (props) => {
           ))}
         {!search &&
           props.followings
-            .slice((page - 1) * REPO_IN_PAGES, page * REPO_IN_PAGES)
+            .slice((page - 1) * ITEM_IN_PAGES, page * ITEM_IN_PAGES)
             .map((item) => {
               return <FollowingItem key={item.id} item={item} />;
             })}

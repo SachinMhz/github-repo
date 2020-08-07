@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./followers.css";
 import { connect } from "react-redux";
-import RepoItem from "./followerItem";
+import FollowerItem from "./followerItem";
 
-const REPO_IN_PAGES = 10;
+const ITEM_IN_PAGES = 10;
 
 const Repository = (props) => {
   const [search, setSearch] = useState("");
@@ -15,12 +15,12 @@ const Repository = (props) => {
 
   const searchList = (list) => {
     return list.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
+      item.login.toLowerCase().includes(search.toLowerCase())
     );
   };
 
   const nextPage = () => {
-    if (page < props.followers.length / REPO_IN_PAGES) {
+    if (page < props.followers.length / ITEM_IN_PAGES) {
       setPage(page + 1);
     }
   };
@@ -44,16 +44,16 @@ const Repository = (props) => {
         {search &&
           (searchList(props.followers).length > 0 ? (
             searchList(props.followers).map((item) => {
-              return <RepoItem key={item.id} item={item} />;
+              return <FollowerItem key={item.id} item={item} />;
             })
           ) : (
             <div style={{ marginTop: 10, fontSize: 16 }}> No result found</div>
           ))}
         {!search &&
           props.followers
-            .slice((page - 1) * REPO_IN_PAGES, page * REPO_IN_PAGES)
+            .slice((page - 1) * ITEM_IN_PAGES, page * ITEM_IN_PAGES)
             .map((item) => {
-              return <RepoItem key={item.id} item={item} />;
+              return <FollowerItem key={item.id} item={item} />;
             })}
       </div>
 

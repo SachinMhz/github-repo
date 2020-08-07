@@ -11,7 +11,7 @@ const FollowerItem = ({ item }) => {
       </div>
 
       <div className="repo__btn">
-        <i className="far fa-star"></i> Follow
+        <i className="fas fa-user-plus"></i> Follow
       </div>
     </div>
   );

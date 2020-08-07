@@ -15,7 +15,6 @@ const Header = (props) => {
               placeholder="Search or jump to..."
               type="text"
             />
-            <div className="search__input-inside">/aadasd</div>
           </div>
 
           <div className="nav header__nav clearFix">
