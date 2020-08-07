@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
+import httpUtil from "./utils/http";
+import config from "./utils/config";
+
 import { getRepository } from "./actions/repoAction";
 import { getProfile } from "./actions/profileAction";
 import { getFollowers } from "./actions/followerAction";
@@ -14,54 +17,57 @@ import Followers from "./components/followers";
 import Followings from "./components/followings";
 import Footer from "./components/footer/";
 
+
+
 const App = (props) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
-    fetch("https://api.github.com/users/SachinMhz/repos")
-      .then((res) => res.json())
+    httpUtil
+      .get(config.endPoints.repository)
       .then((result) => {
         props.getRepository(result);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log("repo not fetched");
-        setIsLoading(true);
+        console.log(err, "repo not fetched");
+        setIsError(true);
       });
-    fetch("https://api.github.com/users/SachinMhz")
-      .then((res) => res.json())
+    httpUtil
+      .get(config.endPoints.user)
       .then((result) => {
         props.getProfile(result);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log("profile not fetched");
-        setIsLoading(true);
+        setIsError(true);
       });
-    fetch("https://api.github.com/users/SachinMhz/followers")
-      .then((res) => res.json())
+    httpUtil
+      .get(config.endPoints.followers)
       .then((result) => {
         props.getFollowers(result);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log("followers not fetched");
-        setIsLoading(true);
+        setIsError(true);
       });
-    fetch("https://api.github.com/users/SachinMhz/following")
-      .then((res) => res.json())
+    httpUtil
+      .get(config.endPoints.followings)
       .then((result) => {
         props.getFollowings(result);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log("followings not fetched");
-        setIsLoading(true);
+        setIsError(true);
       });
   }, []);
 
   return (
     <div>
-      {isLoading ? (
+      {isLoading && (
         <div className="loading-main">
           <img
             className="loading-img"
@@ -69,7 +75,8 @@ const App = (props) => {
             alt="loading gif"
           />
         </div>
-      ) : (
+      )}
+      {!isLoading && !isError && (
         <div>
           <Header />
           <TabNavigation />
@@ -82,6 +89,7 @@ const App = (props) => {
           <Footer />
         </div>
       )}
+      {isError && <div className="error-container"> Cannot fetch data </div>}
     </div>
   );
 };

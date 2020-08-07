@@ -1,5 +1,6 @@
 {
   "name": "github-repo",
+  "description": "A github-repository clone that enables to see the profile, repository, followers and followings",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,11 +12,11 @@
     "react-redux": "^7.2.1",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5"
-  },  
+  },
   "homepage": "https://sachinmhz.github.io/github-repo/",
   "scripts": {
-    "predeploy":"yarn run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
