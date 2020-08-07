@@ -24,28 +24,30 @@ const TabNavigation = (props) => {
         onClick={() => changeActive(0)}
       >
         <span className="tab__icon">
-          <i class="fas fa-book-open"></i>
-        </span>
-        Overview
-      </li>
-      <li
-        className={`tab__item ${getStyle(1)}`}
-        onClick={() => changeActive(1)}
-      >
-        <span className="tab__icon">
           <i class="fas fa-book"></i>
         </span>
         Repositories
         <span className="tab__repo-no">{props.repo.length}</span>
       </li>
       <li
+        className={`tab__item ${getStyle(1)}`}
+        onClick={() => changeActive(1)}
+      >
+        <span className="tab__icon">
+          <i class="fas fa-users"></i>
+        </span>
+        Followers
+        <span className="tab__repo-no">{props.followers.length}</span>
+      </li>
+      <li
         className={`tab__item ${getStyle(2)}`}
         onClick={() => changeActive(2)}
       >
         <span className="tab__icon">
-          <i class="fas fa-chart-bar"></i>
+          <i class="fas fa-user-friends"></i>
         </span>
-        Projects
+        Followings
+        <span className="tab__repo-no">{props.followings.length}</span>
       </li>
     </ul>
   );
@@ -54,6 +56,8 @@ const TabNavigation = (props) => {
 const mapStateToProps = (state) => {
   return {
     repo: state.repo.repo,
+    followers: state.followers.followers,
+    followings: state.followings.followings,
   };
 };
 export default connect(mapStateToProps)(TabNavigation);

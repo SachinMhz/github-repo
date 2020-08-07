@@ -47,6 +47,7 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    ...state,
     profile: state.profile,
   };
 };

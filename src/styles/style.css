@@ -1,0 +1,12 @@
+.loading-main {
+  width: 100%;
+  position: relative;
+}
+.loading-img {
+  display: inline-block;
+  margin: auto;
+  width: 10%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
