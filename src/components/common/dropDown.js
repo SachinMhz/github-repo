@@ -5,7 +5,7 @@ const DropDown = (props) => {
     <span className="dropdown ">
       <span className="dropdown__title">{props.title}: </span>
       <span className="dropdown__option">All</span>
-      <i className="dropdown__icon" class="fas fa-caret-down"></i>
+      <i className="dropdown__icon fas fa-caret-down"></i>
     </span>
   );
 };

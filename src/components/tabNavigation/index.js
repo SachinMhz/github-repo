@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./tabNavigation.css";
 
+import { changeTab } from "../../actions/tabAction";
+
 const TabNavigation = (props) => {
-  const [active, setActive] = useState([0, 1, 0]);
+  const [active, setActive] = useState([1, 0, 0]);
 
   const getStyle = (idx) => {
     if (active[idx]) {
@@ -21,30 +23,39 @@ const TabNavigation = (props) => {
     <ul className="tab tab-navigation">
       <li
         className={`tab__item ${getStyle(0)}`}
-        onClick={() => changeActive(0)}
+        onClick={() => {
+          changeActive(0);
+          props.changeTab("Repository");
+        }}
       >
         <span className="tab__icon">
-          <i class="fas fa-book"></i>
+          <i className="fas fa-book"></i>
         </span>
         Repositories
         <span className="tab__repo-no">{props.repo.length}</span>
       </li>
       <li
         className={`tab__item ${getStyle(1)}`}
-        onClick={() => changeActive(1)}
+        onClick={() => {
+          changeActive(1);
+          props.changeTab("Followers");
+        }}
       >
         <span className="tab__icon">
-          <i class="fas fa-users"></i>
+          <i className="fas fa-users"></i>
         </span>
         Followers
         <span className="tab__repo-no">{props.followers.length}</span>
       </li>
       <li
         className={`tab__item ${getStyle(2)}`}
-        onClick={() => changeActive(2)}
+        onClick={() => {
+          changeActive(2);
+          props.changeTab("Followings");
+        }}
       >
         <span className="tab__icon">
-          <i class="fas fa-user-friends"></i>
+          <i className="fas fa-user-friends"></i>
         </span>
         Followings
         <span className="tab__repo-no">{props.followings.length}</span>
@@ -60,4 +71,12 @@ const mapStateToProps = (state) => {
     followings: state.followings.followings,
   };
 };
-export default connect(mapStateToProps)(TabNavigation);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeTab: (tabName) => {
+      dispatch(changeTab(tabName));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(TabNavigation);

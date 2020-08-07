@@ -5,7 +5,7 @@ const Footer = (props) => {
   return (
     <div className="footer">
       <div className="footer__icon centralize">
-        <i class="fab fa-github"></i>
+        <i className="fab fa-github"></i>
       </div>
     </div>
   );

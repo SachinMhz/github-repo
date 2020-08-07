@@ -7,7 +7,7 @@ const Header = (props) => {
       <div className="container clearFix">
         <div className="header--left">
           <div className="header__icon">
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
           </div>
           <div className="search header__search">
             <input
@@ -27,17 +27,17 @@ const Header = (props) => {
         </div>
         <ul className="header--right">
           <li className="header__icon-right">
-            <i class="far fa-bell"></i>
+            <i className="far fa-bell"></i>
           </li>
           <li className="header__icon-right">
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </li>
           <li className="header__icon-right">
-            <i class="fas fa-user"></i>
+            <i className="fas fa-user"></i>
           </li>
         </ul>
         <div className="ham-menu">
-          <i class="fas fa-bars"></i>
+          <i className="fas fa-bars"></i>
         </div>
       </div>
     </div>

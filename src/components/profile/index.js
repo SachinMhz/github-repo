@@ -23,7 +23,7 @@ const Profile = (props) => {
       <div className="profile__desc">{bio}</div>
       <ul className="profile__follow-container">
         <li className="profile__items">
-          <i class="fas fa-user-friends"></i>
+          <i className="fas fa-user-friends"></i>
           {"  "}
           <strong>{followers} </strong> followers
         </li>
@@ -32,11 +32,11 @@ const Profile = (props) => {
         </li>
       </ul>
       <div className="profile__text">
-        <i class="fas fa-map-marker-alt"></i> {location}
+        <i className="fas fa-map-marker-alt"></i> {location}
       </div>
 
       <div className="profile__text">
-        <i class="fas fa-link"></i>{" "}
+        <i className="fas fa-link"></i>{" "}
         <a href={blog} title="profile link">
           {blog}
         </a>

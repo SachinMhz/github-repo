@@ -13,7 +13,7 @@ const RepoItem = ({ item }) => {
       {language && (
         <div className="repo-item__text">
           <span className="repo__circle">
-            <i class="fas fa-circle"></i>
+            <i className="fas fa-circle"></i>
           </span>
           {language}
         </div>
@@ -21,7 +21,7 @@ const RepoItem = ({ item }) => {
       <div className="repo-item__text">Update on {updated_at.slice(0, 10)}</div>
 
       <div className="repo__btn">
-        <i class="far fa-star"></i> Star
+        <i className="far fa-star"></i> Star
       </div>
     </div>
   );

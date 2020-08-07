@@ -1,0 +1,93 @@
+.repository {
+  float: left;
+  width: 100%;
+  padding: 16px;
+}
+
+.repo-item {
+  position: relative;
+  border-bottom: 1px solid #666666;
+  padding: 15px 0px;
+  color: #666666;
+}
+
+.repo-item__title {
+  margin: 10px 0px;
+  font-size: 22px;
+  color: #0366de;
+}
+.repo-item__text {
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.repo__search-input {
+  width: 100%;
+  padding: 6px 8px;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: #666666;
+  font-size: 14px;
+}
+.repo__search-input:focus {
+  outline: none;
+  border-width: 1px;
+  border-color: #000;
+  box-shadow: 0 0 3px 3px #b3d1f3;
+}
+
+.dropdown-container {
+  display: none;
+}
+
+.repo__btn {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  padding: 4px 12px;
+  border: 1px solid #d3d5d6;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #f3f4f6;
+}
+.repo__btn:hover {
+  background-color: #dde1eb;
+}
+.repo__circle {
+  font-size: 12px;
+  color: green;
+  margin-right: 5px;
+}
+
+.repo-page__nav {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+  font-size: 32px;
+}
+.repo-page__arrow {
+  width: 50px;
+  height: 50px;
+  color: #666666;
+  cursor: pointer;
+  margin: 15px;
+}
+.repo-page__arrow:hover {
+  color: black;
+}
+.repo-page__number {
+  font-weight: bold;
+}
+
+@media (min-width: 992px) {
+  .repository {
+    width: 75%;
+  }
+  .repo__search-input {
+    width: 50%;
+  }
+  .dropdown-container {
+    display: inline;
+  }
+}

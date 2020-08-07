@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "./repository.css";
+import "./followers.css";
 import { connect } from "react-redux";
-import RepoItem from "./repoItem";
-import DropDown from "../common/dropDown";
+import RepoItem from "./followerItem";
 
 const REPO_IN_PAGES = 10;
 
@@ -21,7 +20,7 @@ const Repository = (props) => {
   };
 
   const nextPage = () => {
-    if (page < props.repo.length / REPO_IN_PAGES) {
+    if (page < props.followers.length / REPO_IN_PAGES) {
       setPage(page + 1);
     }
   };
@@ -38,24 +37,20 @@ const Repository = (props) => {
           value={search}
           onChange={onSearchChange}
           className="repo__search-input"
-          placeholder="Find a repository..."
+          placeholder="Find a Follower..."
         />
-        <span className="dropdown-container">
-          <DropDown title={"Type"} />
-          <DropDown title={"Language"} />
-        </span>
       </div>
       <div>
         {search &&
-          (searchList(props.repo).length > 0 ? (
-            searchList(props.repo).map((item) => {
+          (searchList(props.followers).length > 0 ? (
+            searchList(props.followers).map((item) => {
               return <RepoItem key={item.id} item={item} />;
             })
           ) : (
             <div style={{ marginTop: 10, fontSize: 16 }}> No result found</div>
           ))}
         {!search &&
-          props.repo
+          props.followers
             .slice((page - 1) * REPO_IN_PAGES, page * REPO_IN_PAGES)
             .map((item) => {
               return <RepoItem key={item.id} item={item} />;
@@ -76,7 +71,7 @@ const Repository = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    repo: state.repo.repo,
+    followers: state.followers.followers,
   };
 };
 export default connect(mapStateToProps)(Repository);

@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import "./repository.css";
+import "./followings.css";
 import { connect } from "react-redux";
-import RepoItem from "./repoItem";
-import DropDown from "../common/dropDown";
+import FollowingItem from "./followingItem";
 
 const REPO_IN_PAGES = 10;
 
 const Repository = (props) => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-
   const onSearchChange = (e) => {
     setSearch(e.target.value);
   };
@@ -21,7 +19,7 @@ const Repository = (props) => {
   };
 
   const nextPage = () => {
-    if (page < props.repo.length / REPO_IN_PAGES) {
+    if (page < props.followings.length / REPO_IN_PAGES) {
       setPage(page + 1);
     }
   };
@@ -38,27 +36,23 @@ const Repository = (props) => {
           value={search}
           onChange={onSearchChange}
           className="repo__search-input"
-          placeholder="Find a repository..."
+          placeholder="Find a Following..."
         />
-        <span className="dropdown-container">
-          <DropDown title={"Type"} />
-          <DropDown title={"Language"} />
-        </span>
       </div>
       <div>
         {search &&
-          (searchList(props.repo).length > 0 ? (
-            searchList(props.repo).map((item) => {
-              return <RepoItem key={item.id} item={item} />;
+          (searchList(props.followings).length > 0 ? (
+            searchList(props.followings).map((item) => {
+              return <FollowingItem key={item.id} item={item} />;
             })
           ) : (
             <div style={{ marginTop: 10, fontSize: 16 }}> No result found</div>
           ))}
         {!search &&
-          props.repo
+          props.followings
             .slice((page - 1) * REPO_IN_PAGES, page * REPO_IN_PAGES)
             .map((item) => {
-              return <RepoItem key={item.id} item={item} />;
+              return <FollowingItem key={item.id} item={item} />;
             })}
       </div>
 
@@ -76,7 +70,7 @@ const Repository = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    repo: state.repo.repo,
+    followings: state.followings.followings,
   };
 };
 export default connect(mapStateToProps)(Repository);

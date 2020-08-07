@@ -10,6 +10,8 @@ import Header from "./components/header/";
 import Profile from "./components/profile/";
 import TabNavigation from "./components/tabNavigation";
 import Repository from "./components/repository";
+import Followers from "./components/followers";
+import Followings from "./components/followings";
 import Footer from "./components/footer/";
 
 const App = (props) => {
@@ -73,7 +75,9 @@ const App = (props) => {
           <TabNavigation />
           <main className="clearFix">
             <Profile />
-            <Repository />
+            {props.tabName === "Repository" && <Repository />}
+            {props.tabName === "Followers" && <Followers />}
+            {props.tabName === "Followings" && <Followings />}
           </main>
           <Footer />
         </div>
@@ -84,7 +88,7 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    repo: state.repo,
+    tabName: state.tabName.tabName,
   };
 };
 const mapDispatchToProps = (dispatch) => {
